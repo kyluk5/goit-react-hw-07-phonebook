@@ -1,9 +1,19 @@
 {
   "contacts": [
     {
-      "name": "cddcd",
-      "number": "cwcwc",
+      "name": "Kulyk Andrii ",
+      "number": "0632235747",
       "id": 1
+    },
+    {
+      "name": "maks",
+      "number": "0632235747",
+      "id": 3
+    },
+    {
+      "name": "Andrii",
+      "number": "cdscdsc",
+      "id": 4
     }
   ]
 }

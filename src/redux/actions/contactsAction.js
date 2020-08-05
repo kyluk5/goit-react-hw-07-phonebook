@@ -1,56 +1,20 @@
-import { v4 as uuidv4 } from "uuid";
-import { LOCAL, ADD, DELETE, VALUE } from "../constants/contactsConst";
+import { VALUE } from "../constants/contactsConst";
 import { createAction } from "@reduxjs/toolkit";
 
-export const readFromLocal = createAction(LOCAL);
+export const getContactsReguest = createAction("@contacts/getReguest");
+export const getContactsSeccess = createAction("@contacts/getReguestSeccess");
+export const getContactsError = createAction("@contacts/getReguestError");
 // ==================================================================
 export const addContactsReguest = createAction("@contacts/addReguest");
 export const addContactsSeccess = createAction("@contacts/addReguestSeccess");
 export const addContactsError = createAction("@contacts/addReguestError");
-
-export const addContact = createAction(ADD, function (name, number) {
-  return {
-    payload: {
-      name,
-      number,
-      id: uuidv4(),
-    },
-  };
-});
-export const deleteContact = createAction(DELETE);
+// ==================================================================
+export const deleteContactsReguest = createAction("@contacts/deleteReguest");
+export const deleteContactsSeccess = createAction(
+  "@contacts/deleteReguestSeccess"
+);
+export const deleteContactsError = createAction("@contacts/deleteReguestError");
+// ==================================================================
 export const inputValue = createAction(VALUE, (e) => ({
   payload: e.target.value,
 }));
-
-// ========================================
-
-// const readFromLocal = (arr) => ({
-//   type: LOCAL,
-//   payload: arr,
-// });
-
-// const addContact = (name, number) => ({
-//   type: ADD,
-//   payload: {
-//     name,
-//     number,
-//     id: uuidv4(),
-//   },
-// });
-
-// const deleteContact = (e) => ({
-//   type: DELETE,
-//   payload: e.target.id,
-// });
-
-// const inputValue = (e) => ({
-//   type: VALUE,
-//   payload: e.target.value,
-// });
-
-// export default {
-//   readFromLocal,
-//   addContact,
-//   deleteContact,
-//   inputValue,
-// };

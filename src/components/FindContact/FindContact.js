@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
 import "../FindContact/FindContact.css";
-import { deleteContact, inputValue } from "../../redux/actions/contactsAction";
+import { inputValue } from "../../redux/actions/contactsAction";
+import { deleteContact } from "../../redux/operations/contactsOperations";
 
 const FindContact = ({ filter, contacts, inputValue, deleteContact }) => {
   const getFilteredContacts = () => {
