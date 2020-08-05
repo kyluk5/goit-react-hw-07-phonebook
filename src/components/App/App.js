@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { readFromLocal, addContact } from "../../redux/actions/contactsAction";
+// import { readFromLocal, addContact } from "../../redux/actions/contactsAction";
+import { addContact } from "../../redux/operations/contactsOperations";
 import PfoneForm from "../PhoneForm/PhoneForm";
 import FindContact from "../FindContact/FindContact";
 import { CSSTransition } from "react-transition-group";
@@ -42,18 +43,18 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
-    const writedContacts = localStorage.getItem("contacts");
-    if (writedContacts) {
-      this.props.readFromLocal(JSON.parse(writedContacts));
-    }
-  }
+  // componentDidMount() {
+  //   const writedContacts = localStorage.getItem("contacts");
+  //   if (writedContacts) {
+  //     this.props.readFromLocal(JSON.parse(writedContacts));
+  //   }
+  // }
 
-  componentDidUpdate(prevProps, PrevState) {
-    if (prevProps.contacts !== this.props.contacts) {
-      localStorage.setItem("contacts", JSON.stringify(this.props.contacts));
-    }
-  }
+  // componentDidUpdate(prevProps, PrevState) {
+  //   if (prevProps.contacts !== this.props.contacts) {
+  //     localStorage.setItem("contacts", JSON.stringify(this.props.contacts));
+  //   }
+  // }
 
   render() {
     const { name, number, value } = this.state;
@@ -94,7 +95,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   addContact,
-  readFromLocal,
+  // readFromLocal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

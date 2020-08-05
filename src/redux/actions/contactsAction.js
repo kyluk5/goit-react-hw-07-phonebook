@@ -3,6 +3,11 @@ import { LOCAL, ADD, DELETE, VALUE } from "../constants/contactsConst";
 import { createAction } from "@reduxjs/toolkit";
 
 export const readFromLocal = createAction(LOCAL);
+// ==================================================================
+export const addContactsReguest = createAction("@contacts/addReguest");
+export const addContactsSeccess = createAction("@contacts/addReguestSeccess");
+export const addContactsError = createAction("@contacts/addReguestError");
+
 export const addContact = createAction(ADD, function (name, number) {
   return {
     payload: {
