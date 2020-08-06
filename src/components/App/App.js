@@ -8,6 +8,7 @@ import PfoneForm from "../PhoneForm/PhoneForm";
 import FindContact from "../FindContact/FindContact";
 import { CSSTransition } from "react-transition-group";
 import "./App.css";
+import { contactsSelector } from "../../redux/selectors/contactsSelectors";
 
 class App extends Component {
   state = {
@@ -49,12 +50,6 @@ class App extends Component {
     this.props.getContact();
   }
 
-  // componentDidUpdate(prevProps, PrevState) {
-  //   if (prevProps.contacts !== this.props.contacts) {
-  //     localStorage.setItem("contacts", JSON.stringify(this.props.contacts));
-  //   }
-  // }
-
   render() {
     const { name, number, value } = this.state;
     const test = () => {
@@ -89,7 +84,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  contacts: state.contacts.items,
+  contacts: contactsSelector(state),
 });
 
 const mapDispatchToProps = {

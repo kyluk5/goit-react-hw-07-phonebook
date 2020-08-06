@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 import "../FindContact/FindContact.css";
 import { inputValue } from "../../redux/actions/contactsAction";
 import { deleteContact } from "../../redux/operations/contactsOperations";
+import {
+  contactsFilterSelector,
+  contactsItemsSelector,
+} from "../../redux/selectors/contactsSelectors";
 
 const FindContact = ({ filter, contacts, inputValue, deleteContact }) => {
   const getFilteredContacts = () => {
@@ -17,7 +21,6 @@ const FindContact = ({ filter, contacts, inputValue, deleteContact }) => {
     <>
       {getFilteredContacts().length > 1 && (
         <div className="search-container">
-          {/* <h3>Contacts</h3> */}
           <span>Find contacts by name</span>
           <br></br>
           <input type="text" onChange={inputValue}></input>
@@ -45,12 +48,10 @@ const FindContact = ({ filter, contacts, inputValue, deleteContact }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    filter: state.contacts.filter,
-    contacts: state.contacts.items,
-  };
-};
+const mapStateToProps = (state) => ({
+  filter: contactsFilterSelector(state),
+  contacts: contactsItemsSelector(state),
+});
 
 const mapDispatchToProps = {
   inputValue,
