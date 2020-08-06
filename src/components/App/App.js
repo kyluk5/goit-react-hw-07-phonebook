@@ -8,7 +8,7 @@ import PfoneForm from "../PhoneForm/PhoneForm";
 import FindContact from "../FindContact/FindContact";
 import { CSSTransition } from "react-transition-group";
 import "./App.css";
-import { contactsSelector } from "../../redux/selectors/contactsSelectors";
+import { contactsSelector } from "../../redux/selectors/contacts-selectors";
 
 class App extends Component {
   state = {

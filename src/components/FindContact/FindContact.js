@@ -8,18 +8,13 @@ import { deleteContact } from "../../redux/operations/contactsOperations";
 import {
   contactsFilterSelector,
   contactsItemsSelector,
-} from "../../redux/selectors/contactsSelectors";
+  getFilteredSelector,
+} from "../../redux/selectors/contacts-selectors";
 
-const FindContact = ({ filter, contacts, inputValue, deleteContact }) => {
-  const getFilteredContacts = () => {
-    return contacts.filter((item) =>
-      item.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
-
+const FindContact = ({ inputValue, deleteContact, result }) => {
   return (
     <>
-      {getFilteredContacts().length > 1 && (
+      {result.length > 1 && (
         <div className="search-container">
           <span>Find contacts by name</span>
           <br></br>
@@ -28,7 +23,7 @@ const FindContact = ({ filter, contacts, inputValue, deleteContact }) => {
       )}
       <div className="search_info">
         <TransitionGroup component="ul" className="contact_list">
-          {getFilteredContacts().map((item) => (
+          {result.map((item) => (
             <CSSTransition key={item.id} classNames="list__item" timeout={800}>
               <li className="contact_item" key={item.id}>
                 {item.name} : {item.number}
@@ -51,6 +46,7 @@ const FindContact = ({ filter, contacts, inputValue, deleteContact }) => {
 const mapStateToProps = (state) => ({
   filter: contactsFilterSelector(state),
   contacts: contactsItemsSelector(state),
+  result: getFilteredSelector(state),
 });
 
 const mapDispatchToProps = {
